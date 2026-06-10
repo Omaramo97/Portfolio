@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omar Abdullah | Portfolio</title>
+  <meta name="description" content="Portfolio of Omar Abdullah - Frontend Developer, UI Designer, and Educator">
+  <link rel="icon" href="omar.jpg" type="image/jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 50%, #e8f4e8 100%);
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      color: #fff;
+      padding: 1rem 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    header .subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+
+    nav {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1e293b;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #c8dde8 0%, #d4dce8 50%, #c8e8c8 100%);
+      margin-bottom: 2rem;
+    }
+
+    .hero img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border: 4px solid #fff;
+    }
+
+    .hero-content {
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h2::after {
+      display: none;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #1e293b;
+      border: 2px solid #e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    .projects, .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-gallery {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background: #3b82f6;
+      transform: scale(1.2);
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel-arrow:hover {
+      background: #3b82f6;
+      color: #fff;
+      border-color: #3b82f6;
+    }
+
+    .carousel-arrow.prev {
+      left: -20px;
+    }
+
+    .carousel-arrow.next {
+      right: -20px;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid #d4d4d4;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 100%);
+    }
+
+    .screenshot-item {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      border: 2px solid #3b82f6;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .screenshot-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+      border-color: #8b5cf6;
+    }
+
+    .screenshot-item img,
+    .screenshot-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot-item:hover img,
+    .screenshot-item:hover video {
+      transform: scale(1.05);
+    }
+
+    .screenshot-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: #fff;
+      padding: 1rem 0.75rem 0.5rem;
+      font-size: 0.75rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .screenshot-item:hover .screenshot-caption {
+      opacity: 1;
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    .project-info h3 {
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .project-role {
+      color: #3b82f6;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tech {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      color: #475569;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .text-only-card {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #d4d4d4;
+    }
+
+    .text-only-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-only-card h3 {
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .text-only-card .company {
+      color: #3b82f6;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-only-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .text-only-card li {
+      color: #64748b;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-only-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-weight: bold;
+    }
+
+    .card {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #d4d4d4;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin: 0.3rem;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+    }
+
+    .lightbox-content {
+      position: relative;
+      margin: auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+      height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+      color: #3b82f6;
+      transform: scale(1.1);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 20px;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .lightbox-nav:hover {
+      color: #3b82f6;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-prev {
+      left: 20px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+    }
+
+    .resume-section {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .resume-section h3 {
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .resume-section .company {
+      color: #3b82f6;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .resume-section .date {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .resume-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .resume-section li {
+      color: #64748b;
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .resume-section li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-weight: bold;
+    }
+
+    .resume-embed {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      background: #f5f5f5;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-item a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #1e293b;
+      color: #94a3b8;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.25rem;
+      }
+
+      header .subtitle {
+        font-size: 0.75rem;
+      }
+
+      nav {
+        gap: 0.5rem;
+      }
+
+      nav a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+
+      .carousel-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+
+      .carousel-arrow.prev {
+        left: -15px;
+      }
+
+      .carousel-arrow.next {
+        right: -15px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      nav a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Omar Abdullah</h1>
+    <p class="subtitle">Frontend Developer | UI Designer | Educator</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero section with photo -->
+  <section class="hero">
+    <img src="omar.jpg" alt="Omar Abdullah portrait">
+    <div class="hero-content">
+      <h2>Hello, I'm Omar</h2>
+      <p>
+        A dynamic Frontend Developer and UI Designer with 3+ years of experience 
+        building responsive, user-focused web applications. Skilled in React, TypeScript, 
+        Tailwind CSS, and passionate about creating digital products that are both beautiful 
+        and functional.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Omar Abdullah, a passionate developer with a diverse background that includes 
+      teaching English and working in customer support. These experiences have sharpened my 
+      communication skills, patience, and ability to adapt to new challenges—qualities that 
+      I bring to every development project. I specialize in creating clean, responsive web 
+      applications using modern technologies like React, TypeScript, and Tailwind CSS. 
+      My goal is to build digital experiences that are not only functional but also 
+      delightful to use.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    
+    <div class="project-gallery">
+      <button class="carousel-arrow prev" onclick="moveCarousel(-1)">‹</button>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <div class="project-card">
+              <div class="screenshot-grid">
+                <div class="screenshot-item" onclick="openLightbox('blush-bandage-1.jpg')">
+                  <img src="blush-bandage-1.jpg" alt="Blush & Bandage Homepage">
+                  <div class="screenshot-caption">Homepage Design</div>
+                </div>
+                <div class="screenshot-item" onclick="openLightbox('blush-bandage-2.jpg')">
+                  <img src="blush-bandage-2.jpg" alt="Blush & Bandage Service Page">
+                  <div class="screenshot-caption">Service Interface</div>
+                </div>
+                <div class="screenshot-item" onclick="openLightbox('blush-bandage-3.png')">
+                  <img src="blush-bandage-3.png" alt="Blush & Bandage Dashboard">
+                  <div class="screenshot-caption">Dashboard View</div>
+                </div>
+              </div>
+              <div class="project-info">
+                <h3>Blush & Bandage</h3>
+                <p class="project-role">Frontend Developer / UI Designer</p>
+                <p class="project-tech">React • TypeScript • Tailwind CSS • AOS.js • Framer Motion</p>
+                <p class="project-description">
+                  Responsive web application for a luxury recovery service. Built reusable components, 
+                  integrated smooth animations, and implemented a modern user interface with pixel-perfect design.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="project-card">
+              <div class="screenshot-grid">
+                <div class="screenshot-item" onclick="openLightbox('mastermindtech-1.webp')">
+                  <img src="mastermindtech-1.webp" alt="MastermindTech Curriculum">
+                  <div class="screenshot-caption">Curriculum Overview</div>
+                </div>
+                <div class="screenshot-item" onclick="openLightbox('mastermindtech-2.png')">
+                  <img src="mastermindtech-2.png" alt="MastermindTech Student Projects">
+                  <div class="screenshot-caption">Student Projects</div>
+                </div>
+                <div class="screenshot-item" onclick="openLightbox('mastermindtech-3.png')">
+                  <img src="mastermindtech-3.png" alt="MastermindTech Learning Platform">
+                  <div class="screenshot-caption">Learning Platform</div>
+                </div>
+              </div>
+              <div class="project-info">
+                <h3>MastermindTech</h3>
+                <p class="project-role">Frontend Developer / Instructor</p>
+                <p class="project-tech">React • JavaScript • HTML5 • CSS3 • Curriculum Design</p>
+                <p class="project-description">
+                  Designed and delivered comprehensive web development curriculum. Enabled students to build 
+                  functional applications using React and modern web technologies through hands-on projects and mentorship.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-arrow next" onclick="moveCarousel(1)">›</button>
+      <div class="carousel-nav" id="carouselNav"></div>
+    </div>
+
+    <h3 style="color: #1e293b; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 600;">Banking Projects</h3>
+    <div class="projects">
+      <div class="text-only-card">
+        <h3>Mastercard</h3>
+        <p class="company">Frontend Developer</p>
+        <p class="project-tech">React • Redux Toolkit • Material UI • Bootstrap</p>
+        <ul>
+          <li>Built scalable React applications using Redux Toolkit for state management</li>
+          <li>Designed and implemented UI components with Material UI and Bootstrap</li>
+          <li>Optimized application performance and ensured cross-browser compatibility</li>
+          <li>Collaborated with UX teams to enhance user experience and accessibility</li>
+        </ul>
+      </div>
+      <div class="text-only-card">
+        <h3>Fifth Third Bank</h3>
+        <p class="company">React Developer</p>
+        <p class="project-tech">React • REST APIs • Responsive Design • Performance Optimization</p>
+        <ul>
+          <li>Developed dynamic UI components for banking applications</li>
+          <li>Optimized performance and maintained clean, maintainable codebases</li>
+          <li>Implemented responsive designs for mobile and desktop interfaces</li>
+          <li>Collaborated with backend teams to integrate REST APIs efficiently</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">TypeScript</span>
+      <span class="skill-tag">Tailwind CSS</span>
+      <span class="skill-tag">UI/UX Design</span>
+      <span class="skill-tag">Responsive Web Design</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">Redux Toolkit</span>
+      <span class="skill-tag">Material UI</span>
+      <span class="skill-tag">Bootstrap</span>
+      <span class="skill-tag">Agile Methodologies</span>
+      <span class="skill-tag">Teaching & Communication</span>
+      <span class="skill-tag">Customer Support</span>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    
+    <div class="resume-section">
+      <h3>Frontend Developer / UI Designer</h3>
+      <p class="company">Blush & Bandage</p>
+      <p class="date">December 2024 – August 2025</p>
+      <ul>
+        <li>Developed responsive React + TypeScript web application with modern architecture</li>
+        <li>Built reusable component library for scalable development</li>
+        <li>Integrated smooth animations using AOS.js and Framer Motion</li>
+        <li>Collaborated with design team to implement pixel-perfect UI designs</li>
+      </ul>
+    </div>
+
+    <div class="resume-section" style="margin-top: 2rem;">
+      <h3>Frontend Developer / Instructor</h3>
+      <p class="company">MastermindTech</p>
+      <p class="date">April 2024 – August 2025</p>
+      <ul>
+        <li>Taught HTML5, CSS3, JavaScript, and React.js to aspiring developers</li>
+        <li>Designed and delivered comprehensive curriculum with hands-on projects</li>
+        <li>Collaborated with clients to enhance and optimize their websites</li>
+        <li>Mentored students through real-world development challenges</li>
+      </ul>
+    </div>
+
+    <div class="resume-section" style="margin-top: 2rem;">
+      <h3>Frontend Developer</h3>
+      <p class="company">Mastercard</p>
+      <p class="date">March 2023 – April 2024</p>
+      <ul>
+        <li>Built scalable React applications using Redux Toolkit for state management</li>
+        <li>Designed and implemented UI components using Material UI and Bootstrap</li>
+        <li>Optimized application performance and ensured cross-browser compatibility</li>
+        <li>Participated in agile development processes and code reviews</li>
+      </ul>
+    </div>
+
+    <div class="resume-section" style="margin-top: 2rem;">
+      <h3>React Developer</h3>
+      <p class="company">Fifth Third Bank</p>
+      <p class="date">June 2022 – March 2023</p>
+      <ul>
+        <li>Developed dynamic UI components for banking applications</li>
+        <li>Optimized performance and maintained clean, maintainable codebases</li>
+        <li>Implemented responsive designs for mobile and desktop interfaces</li>
+        <li>Collaborated with backend teams to integrate REST APIs</li>
+      </ul>
+    </div>
+
+    <div class="resume-section" style="margin-top: 2rem;">
+      <h3>English Teacher</h3>
+      <p class="company">ADC, Khartoum</p>
+      <p class="date">Previous Experience</p>
+      <ul>
+        <li>Taught advanced English, IELTS & TOEFL preparation courses</li>
+        <li>Designed engaging lessons with interactive activities and multimedia</li>
+        <li>Developed strong communication and presentation skills</li>
+        <li>Mentored students to achieve their language learning goals</li>
+      </ul>
+    </div>
+
+    <div style="margin-top: 2rem; text-align: center;">
+      <p style="margin-bottom: 1rem; color: #64748b;">View or download my full resume:</p>
+      <iframe src="Omar_Abdullah_Resume.pdf" class="resume-embed"></iframe>
+      <p style="margin-top: 1rem;">
+        <a href="Omar_Abdullah_Resume.pdf" download class="btn btn-primary">Download Resume (PDF)</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span>📧</span>
+        <a href="mailto:Omarabdullah.fo@gmail.com">Omarabdullah.fo@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>📱</span>
+        <a href="tel:+201507870093">(+20) 0150-787-0093</a>
+      </div>
+      <div class="contact-item">
+        <span>📍</span>
+        <span>Cairo, Egypt</span>
+      </div>
+      <div class="contact-item">
+        <span>💼</span>
+        <a href="https://linkedin.com/in/omarabdullah" target="_blank">linkedin.com/in/omarabdullah</a>
+      </div>
+      <div class="contact-item">
+        <span>💻</span>
+        <a href="https://github.com/omarabdullah" target="_blank">github.com/omarabdullah</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Omar Abdullah. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <span class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateLightbox(-1)">&#10094;</span>
+      <img id="lightbox-img" src="" alt="Enlarged screenshot">
+      <span class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateLightbox(1)">&#10095;</span>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox functionality
+    const lightboxImages = [
+      'blush-bandage-1.jpg',
+      'blush-bandage-2.jpg',
+      'blush-bandage-3.png',
+      'mastermindtech-1.webp',
+      'mastermindtech-2.png',
+      'mastermindtech-3.png'
+    ];
+    let currentLightboxIndex = 0;
+
+    function openLightbox(imageSrc) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      currentLightboxIndex = lightboxImages.indexOf(imageSrc);
+      lightboxImg.src = imageSrc;
+      lightbox.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function navigateLightbox(direction) {
+      currentLightboxIndex += direction;
+      if (currentLightboxIndex < 0) currentLightboxIndex = lightboxImages.length - 1;
+      if (currentLightboxIndex >= lightboxImages.length) currentLightboxIndex = 0;
+      document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.style.display === 'block') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+      }
+    });
+
+    // Carousel functionality
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const nav = document.getElementById('carouselNav');
+    const totalSlides = slides.length;
+
+    // Create navigation dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('carousel-dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      nav.appendChild(dot);
+    });
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update dots
+      const dots = document.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function moveCarousel(direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    // Auto-advance carousel
+    setInterval(() => moveCarousel(1), 5000);
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Add active state to navigation on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.style.background = '';
+        if (link.getAttribute('href') === `#${current}`) {
+          link.style.background = 'rgba(255, 255, 255, 0.1)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

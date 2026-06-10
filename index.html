@@ -19,6 +19,7 @@
       background: linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 50%, #e8f4e8 100%);
       color: #2c3e50;
       line-height: 1.6;
+      padding-top: 80px;
     }
 
     header {
@@ -26,8 +27,10 @@
       color: #fff;
       padding: 1rem 1rem;
       text-align: center;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
@@ -732,8 +735,8 @@
           <div class="carousel-slide">
             <div class="project-card">
               <div class="screenshot-grid">
-                <div class="screenshot-item" onclick="openLightbox('blush-bandage-1.jpg')">
-                  <img src="blush-bandage-1.jpg" alt="Blush & Bandage Homepage">
+                <div class="screenshot-item" onclick="openLightbox('blush-bandage-1.png')">
+                  <img src="blush-bandage-1.png" alt="Blush & Bandage Homepage">
                   <div class="screenshot-caption">Homepage Design</div>
                 </div>
                 <div class="screenshot-item" onclick="openLightbox('blush-bandage-2.jpg')">
@@ -950,7 +953,7 @@
   <script>
     // Lightbox functionality
     const lightboxImages = [
-      'blush-bandage-1.jpg',
+      'blush-bandage-1.png',
       'blush-bandage-2.jpg',
       'blush-bandage-3.png',
       'mastermindtech-1.webp',

@@ -31,8 +31,9 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 9999;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      width: 100%;
     }
 
     header h1 {
@@ -272,16 +273,19 @@
     }
 
     .screenshot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-direction: row;
       gap: 1rem;
       padding: 1.5rem;
       background: linear-gradient(135deg, #e8f4f8 0%, #d4e8ed 100%);
+      overflow-x: auto;
     }
 
     .screenshot-item {
       position: relative;
       aspect-ratio: 16/9;
+      min-width: 300px;
+      flex: 0 0 auto;
       overflow: hidden;
       border-radius: 0.75rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);

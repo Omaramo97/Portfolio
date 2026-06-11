@@ -15,7 +15,7 @@
     }
 
     :root {
-      --header-height: 140px;
+      --site-top-height: 520px;
     }
 
     body {
@@ -24,7 +24,15 @@
       color: #2c3e50;
       line-height: 1.6;
       margin: 0;
-      padding-top: var(--header-height);
+    }
+
+    .site-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 99999;
     }
 
     header {
@@ -32,16 +40,11 @@
       color: #fff;
       padding: 1rem 1rem;
       text-align: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 99999;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     .site-content {
+      padding-top: var(--site-top-height);
       overflow-x: clip;
       max-width: 100%;
     }
@@ -116,9 +119,9 @@
       justify-content: center;
       gap: 3rem;
       flex-wrap: wrap;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
       background: linear-gradient(135deg, #c8dde8 0%, #d4dce8 50%, #c8e8c8 100%);
-      margin-bottom: 2rem;
+      margin-bottom: 0;
     }
 
     .hero img {
@@ -669,6 +672,21 @@
       .hero {
         flex-direction: column;
         text-align: center;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .hero img {
+        width: 140px;
+        height: 140px;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
       }
 
       .hero-content {
@@ -695,11 +713,12 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: var(--header-height);
+      scroll-padding-top: calc(var(--site-top-height) + 1rem);
     }
   </style>
 </head>
 <body>
+  <div class="site-top" id="siteTop">
   <header>
     <h1>Omar Abdullah</h1>
     <p class="subtitle">Frontend Developer | UI Designer | Educator</p>
@@ -712,7 +731,6 @@
     </nav>
   </header>
 
-  <main class="site-content">
   <!-- Hero section with photo -->
   <section class="hero">
     <img src="omar.jpg" alt="Omar Abdullah portrait">
@@ -730,17 +748,18 @@
       </div>
     </div>
   </section>
+  </div>
 
+  <main class="site-content">
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm Omar Abdullah, a passionate developer with a diverse background that includes 
-      teaching English and working in customer support. These experiences have sharpened my 
-      communication skills, patience, and ability to adapt to new challenges—qualities that 
-      I bring to every development project. I specialize in creating clean, responsive web 
-      applications using modern technologies like React, TypeScript, and Tailwind CSS. 
-      My goal is to build digital experiences that are not only functional but also 
-      delightful to use.
+      A Frontend Developer and UI Designer specializing in React, TypeScript, and Tailwind CSS. 
+      Background in teaching and customer support has developed strong communication skills, 
+      problem-solving abilities, and adaptability—transferable skills that enhance collaboration 
+      with teams and understanding of user needs. Focus is on building clean, responsive web 
+      applications that deliver exceptional user experiences through modern development practices 
+      and attention to detail.
     </p>
   </section>
 
@@ -1055,24 +1074,25 @@
     // Auto-advance carousel
     setInterval(() => moveCarousel(1), 5000);
 
-    function setHeaderOffset() {
-      const header = document.querySelector('header');
-      if (header) {
-        document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+    function setSiteTopOffset() {
+      const siteTop = document.getElementById('siteTop');
+      if (siteTop) {
+        document.documentElement.style.setProperty('--site-top-height', `${siteTop.offsetHeight}px`);
       }
     }
 
-    setHeaderOffset();
-    window.addEventListener('resize', setHeaderOffset);
+    setSiteTopOffset();
+    window.addEventListener('resize', setSiteTopOffset);
+    window.addEventListener('load', setSiteTopOffset);
 
-    // Smooth scrolling for navigation links, offset for fixed header
+    // Smooth scrolling for navigation links, offset for fixed top section
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-          const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+          const topOffset = document.getElementById('siteTop')?.offsetHeight || 0;
+          const top = target.getBoundingClientRect().top + window.scrollY - topOffset + 16;
           window.scrollTo({ top, behavior: 'smooth' });
         }
       });
@@ -1080,7 +1100,7 @@
 
     // Add active state to navigation on scroll
     window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section');
+      const sections = document.querySelectorAll('.site-content section[id]');
       const navLinks = document.querySelectorAll('nav a');
       
       let current = '';

@@ -471,7 +471,7 @@
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 9999;
+      z-index: 999999;
       left: 0;
       top: 0;
       width: 100%;
@@ -511,7 +511,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
-      z-index: 10000;
+      z-index: 1000000;
     }
 
     .lightbox-close:hover {
@@ -530,6 +530,7 @@
       padding: 20px;
       transition: all 0.3s ease;
       user-select: none;
+      z-index: 1000000;
     }
 
     .lightbox-nav:hover {
@@ -672,7 +673,7 @@
       .hero {
         flex-direction: column;
         text-align: center;
-        padding: 2rem 1.5rem;
+        padding: calc(var(--site-top-height) + 2rem) 1.5rem 2rem 1.5rem;
         gap: 1.5rem;
       }
 

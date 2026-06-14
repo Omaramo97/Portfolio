@@ -69,8 +69,8 @@ cd Portfolio
 
 - **Email:** [Omarabdullah.fo@gmail.com](mailto:Omarabdullah.fo@gmail.com)
 - **Phone:** (+20) 0150-787-0093
-- **LinkedIn:** [linkedin.com/in/omarabdullah](https://linkedin.com/in/omarabdullah)
-- **GitHub:** [github.com/omarabdullah](https://github.com/omarabdullah)
+- **LinkedIn:** [linkedin.com/in/omar-abdullah-973402221](https://www.linkedin.com/in/omar-abdullah-973402221/)
+- **GitHub:** [github.com/Omaramo97](https://github.com/Omaramo97)
 
 ---
 
